@@ -1,0 +1,483 @@
+@import url(https://djep21.com/clients/includes/stylesheet_updates.css);
+@charset "utf-8";
+
+/* ==========================================================
+   DJEventPlanner Client Portal
+   River Shark “Main Website” Match (based on provided image)
+   - soft gray background
+   - white/transparent cards
+   - teal pill buttons
+   - rounded corners + gentle shadows
+   ========================================================== */
+
+/* ---------- Theme Tokens ---------- */
+:root{
+  --bg: #dad9d9;                 /* page background like your screenshot */
+  --surface: rgba(255,255,255,.70);
+  --surface-strong: rgba(255,255,255,.85);
+  --text: #111827;
+  --muted: rgba(17,24,39,.70);
+
+  --primary: #297285;            /* teal pill buttons (match image) */
+  --primary-hover: #1f5c6a;
+  --primary-soft: rgba(41,114,133,.14);
+
+  --border: rgba(17,24,39,.10);
+  --shadow: 0 10px 28px rgba(0,0,0,.10);
+  --shadow-soft: 0 6px 18px rgba(0,0,0,.08);
+
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-sm: 12px;
+
+  --max-width: 980px;
+}
+
+/* ---------- Base / Reset ---------- */
+html { overflow-y: scroll; }
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---------- Body / Page Layout ---------- */
+body.djep-body{
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  min-height: 100%;
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.5;
+}
+
+/* Header centered, clean */
+#djep-header{
+  text-align: center;
+  width: 100%;
+  background: transparent !important;
+  padding: 20px 0 0;
+}
+
+/* Main content “card” like your site */
+#djep-content,
+#djep-guestrequestcontent{
+  width: min(var(--max-width), calc(100% - 28px)) !important;
+  max-width: var(--max-width) !important;
+  margin: 18px auto 28px !important;
+  padding: 18px !important;
+
+  background: var(--surface-strong) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow) !important;
+  overflow: hidden;
+}
+
+/* Remove old hard border look if injected */
+#djep-content[style*="background"],
+#djep-guestrequestcontent[style*="background"]{
+  background: var(--surface-strong) !important;
+}
+
+/* ---------- Typography ---------- */
+h1.djep-h1{
+  font-weight: 800 !important;
+  font-size: clamp(28px, 3vw, 46px) !important;
+  color: var(--text) !important;
+  letter-spacing: -0.02em;
+  margin: 18px 0 10px !important;
+  text-align: center;
+}
+h2.djep-h2{
+  font-weight: 750 !important;
+  font-size: 22px !important;
+  color: var(--text) !important;
+  margin: 18px 0 10px !important;
+}
+h3.djep-h3{
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  color: rgba(17,24,39,.85) !important;
+}
+
+p, .djep-p-standard{
+  color: var(--muted) !important;
+  font-size: 15px !important;
+}
+
+/* ---------- Section Title Bars (make them “soft cards”) ---------- */
+.djep-titlebar,
+.djep-titlebarsmall,
+.djep-titlebarsmaller,
+.djep-titlebarnotices,
+.djep-requestlimittitle{
+  width: 100% !important;
+  box-sizing: border-box;
+
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-soft) !important;
+
+  color: var(--text) !important;
+  font-weight: 800 !important;
+  font-size: 14px !important;
+
+  padding: 14px 16px !important;
+  margin: 18px 0 12px !important;
+}
+
+/* Alerts/confirm bars: keep meaning, soften styling */
+.djep-titlebarsmallalert{
+  background: rgba(255, 200, 200, .55) !important;
+  border: 1px solid rgba(140, 0, 0, .18) !important;
+  border-radius: var(--radius-md) !important;
+  color: #4b0b0b !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+
+.djep-titlebarconfirm,
+.djep-titlebarmusicconfirm{
+  background: rgba(210, 255, 210, .55) !important;
+  border: 1px solid rgba(20, 120, 80, .18) !important;
+  border-radius: var(--radius-md) !important;
+  color: #0b3a22 !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+
+/* ---------- Navbar (convert to clean teal pills) ---------- */
+#djep-navbar{
+  width: min(var(--max-width), calc(100% - 28px)) !important;
+  margin: 0 auto !important;
+}
+
+ul#djep-navigation{
+  width: 100% !important;
+  height: auto !important;
+  padding: 12px 0 0 !important;
+  margin: 0 auto 10px !important;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+ul#djep-navigation li{
+  float: none !important;
+  width: auto !important;
+  margin: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  border-radius: 999px !important;
+}
+
+ul#djep-navigation li.shadow{ display:none !important; }
+
+ul#djep-navigation li a:link,
+ul#djep-navigation li a:visited{
+  width: auto !important;
+  height: auto !important;
+  line-height: normal !important;
+  float: none !important;
+
+  padding: 12px 18px !important;
+  border-radius: 999px !important;
+
+  background: var(--primary) !important;
+  color: #fff !important;
+  font-weight: 800 !important;
+  font-size: 12px !important;
+  letter-spacing: .06em !important;
+  text-transform: uppercase !important;
+
+  box-shadow: 0 10px 22px rgba(41,114,133,.18) !important;
+  border: 1px solid rgba(255,255,255,.18) !important;
+  transition: transform .12s ease, background-color .12s ease, box-shadow .12s ease;
+}
+
+ul#djep-navigation li a:hover{
+  background: var(--primary-hover) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(41,114,133,.22) !important;
+}
+
+/* Selected tab = lighter surface with teal text */
+ul#djep-navigation li.selected a:link,
+ul#djep-navigation li.selected a:visited{
+  background: rgba(255,255,255,.65) !important;
+  color: var(--primary) !important;
+  border: 1px solid rgba(41,114,133,.35) !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+
+/* ---------- Inputs / Forms (modern, soft) ---------- */
+input.djep-input,
+select.djep-select,
+textarea.djep-textarea,
+.djep-musicsearchform,
+.djep-songideasdropdown,
+.djep-songgenresdropdown{
+  background: rgba(255,255,255,.65) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 14px !important;
+  color: var(--text) !important;
+  padding: 10px 12px !important;
+  font-size: 14px !important;
+  outline: none !important;
+}
+
+input.djep-input:focus,
+select.djep-select:focus,
+textarea.djep-textarea:focus,
+.djep-musicsearchform:focus{
+  border-color: rgba(41,114,133,.55) !important;
+  box-shadow: 0 0 0 4px var(--primary-soft) !important;
+}
+
+/* form wrapper blocks */
+#djep-form-div{
+  background: transparent !important;
+  padding: 0 !important;
+}
+#djep-wrapper{
+  width: 100% !important;
+  max-width: 560px;
+  margin: 0 auto !important;
+}
+
+/* ---------- Tables (soft, rounded) ---------- */
+table{
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  width: 100%;
+}
+
+.djep-odd,
+.djep-even{
+  background: transparent !important;
+}
+
+.djep-timelinetable tr:nth-child(odd),
+.djep-timelinetable tr:nth-child(even){
+  background: transparent !important;
+}
+
+.djep-table-headers,
+.djep-databasetableheader{
+  background: rgba(255,255,255,.55) !important;
+  color: rgba(17,24,39,.85) !important;
+  font-weight: 800 !important;
+}
+
+tr:hover,
+.djep-musicresultrow:hover,
+.djep-musicresultrowmobile:hover{
+  background: rgba(41,114,133,.08) !important;
+}
+
+/* ---------- “Boxes / Modules” -> card look ---------- */
+.djep-eventlistbox,
+.djep-upcomingmeetingsbox,
+.djep-latestemailsbox,
+.djep-welcometextbox,
+.djep-contactdetailsbox,
+.djep-logindetailsbox,
+.djep-contactformbox,
+.djep-ourcontactinfobox,
+.djep-emailhistorybox,
+.djep-planneraccessbox,
+.djep-managemusicbox,
+.djep-planningformsbox,
+.djep-timelinebox,
+.djep-othertoolsbox,
+.djep-selectyourmusicbox,
+.djep-eventdatetimesbox,
+.djep-servicedetailsbox,
+.djep-eventdescriptionbox,
+.djep-venueinfobox,
+.djep-staffingbox,
+.djep-paymentsfinancesbox,
+.djep-feedetailsbox,
+.djep-paymenthistorybox,
+.djep-totalfeebox,
+.djep-otherfilesbox,
+.djep-documentsbox,
+.djep-relatedfilesbox,
+.djep-requestchangesbox,
+.djep-viewrequestboxes,
+.djep-guestrequestdescription,
+.djep-guestrequesthowitworksbox,
+.djep-guestrequestsettingsbox,
+.djep-emailmessagebox,
+.djep-makepaymentbox,
+.djep-viewdocumentbox,
+.djep-requestchangesformbox,
+.djep-planningformseditbox,
+.djep-weddingnamesbox,
+.djep-evaluationbox,
+.djep-printdocumentbox,
+.djep-planningformsviewbox,
+.djep-viewtimelinebox,
+.djep-edittimelinebox,
+.djep-viewweddingnamesbox,
+.djep-editweddingnamesbox{
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-soft) !important;
+  overflow: hidden;
+}
+
+/* ---------- Buttons (convert all to teal pill style) ---------- */
+.djep-planeventbutton,
+.djep-eventdetailsbutton,
+.djep-paymentbutton,
+.djep-readviewbutton,
+.djep-actionbutton,
+.djep-logoutbutton,
+.djep-searchbutton,
+.djep-clipboardbutton,
+.djep-songideabutton,
+.djep-guestsubmitrequests,
+.djep-guestlogout,
+.djep-guestsubmit,
+.djep-specialsongbutton{
+  background: var(--primary) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,.18) !important;
+  border-radius: 999px !important;
+  box-shadow: 0 10px 22px rgba(41,114,133,.18) !important;
+  text-shadow: none !important;
+
+  font-family: inherit !important;
+  font-weight: 800 !important;
+  letter-spacing: .05em !important;
+  text-transform: uppercase !important;
+
+  padding: 12px 18px !important;
+  cursor: pointer !important;
+  display: inline-block !important;
+}
+
+.djep-planeventbutton:hover,
+.djep-eventdetailsbutton:hover,
+.djep-paymentbutton:hover,
+.djep-readviewbutton:hover,
+.djep-actionbutton:hover,
+.djep-logoutbutton:hover,
+.djep-searchbutton:hover,
+.djep-clipboardbutton:hover,
+.djep-songideabutton:hover,
+.djep-guestsubmitrequests:hover,
+.djep-guestlogout:hover,
+.djep-guestsubmit:hover,
+.djep-specialsongbutton:hover{
+  background: var(--primary-hover) !important;
+  box-shadow: 0 14px 28px rgba(41,114,133,.22) !important;
+  transform: translateY(-1px);
+}
+
+/* Make “logout” not dark brown */
+.djep-logoutbutton{
+  background: rgba(255,255,255,.65) !important;
+  color: var(--primary) !important;
+  border: 1px solid rgba(41,114,133,.35) !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+.djep-logoutbutton:hover{
+  background: rgba(255,255,255,.82) !important;
+  color: var(--primary-hover) !important;
+}
+
+/* ---------- Playlist / Special Song Panels (soften colors) ---------- */
+.djep-playlistbox,
+.djep-playlistboxspotify,
+.djep-playlistboxmustplay,
+.djep-playlistboxdonotplay,
+.djep-playlistboxplayifposs,
+.djep-playlistboxdedications,
+.djep-playlistboxonlyrequest,
+.djep-playlistboxcustomtype1,
+.djep-playlistboxcustomtype2,
+.djep-playlistboxcustomtype3,
+.djep-playlistboxcustomtype4,
+.djep-playlistboxcustomtype5{
+  border-radius: var(--radius-md) !important;
+  border: 1px solid var(--border) !important;
+  background: rgba(255,255,255,.55) !important;
+}
+
+/* Remove heavy gradient headers, keep readable */
+.djep-playlistboxspotifytitle,
+.djep-playlistboxmustplaytitle,
+.djep-playlistboxplayifposstitle,
+.djep-playlistboxdedicationstitle,
+.djep-playlistboxonlyrequesttitle,
+.djep-playlistboxdonotplaytitle,
+.djep-playlistboxcustomtype1title,
+.djep-playlistboxcustomtype2title,
+.djep-playlistboxcustomtype3title,
+.djep-playlistboxcustomtype4title,
+.djep-playlistboxcustomtype5title,
+.djep-special_song_header{
+  background: rgba(255,255,255,.65) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-md) !important;
+  color: var(--text) !important;
+  font-weight: 800 !important;
+  height: auto !important;
+  padding: 10px 12px !important;
+}
+
+/* ---------- “eSigned” pill ---------- */
+.djep-esigned{
+  background-color: rgba(255,255,255,.70) !important;
+  border: 1px solid rgba(41,114,133,.35) !important;
+  border-radius: 999px !important;
+  box-shadow: var(--shadow-soft) !important;
+  color: var(--primary) !important;
+  font-weight: 900 !important;
+  letter-spacing: .08em !important;
+}
+
+/* ---------- Highlight rows (keep meaning, reduce harshness) ---------- */
+.djep-balanceduerow{
+  background-color: rgba(250,240,126,.55) !important;
+  color: #8a5a00 !important;
+}
+.djep-balancepaidrow{
+  background-color: rgba(226,255,183,.55) !important;
+  color: #2f6b1f !important;
+}
+.djep-totalfeerow,
+.djep-totalfeerow span{
+  background-color: rgba(215,244,255,.55) !important;
+  color: #0a3d7a !important;
+}
+.djep-totaldepositrow{
+  background-color: rgba(255,202,203,.55) !important;
+  color: #6b0c14 !important;
+}
+
+/* ---------- Guest request container ---------- */
+.djep-playlistboxguests{
+  border: 2px dashed rgba(41,114,133,.55) !important;
+  border-radius: var(--radius-md) !important;
+  background: rgba(255,255,255,.45) !important;
+}
+
+/* ---------- Mobile tweaks ---------- */
+@media (max-width: 720px){
+  #djep-content,
+  #djep-guestrequestcontent{
+    width: calc(100% - 18px) !important;
+    padding: 14px !important;
+    border-radius: 22px !important;
+  }
+
+  ul#djep-navigation{
+    justify-content: center;
+  }
+}
